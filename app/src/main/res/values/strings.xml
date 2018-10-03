@@ -1,0 +1,34 @@
+<resources>
+    <string name="txt_copyright">Copyright \u00A9 2017 Mastercard. All rights reserved.</string>
+    <string name="generated_qr_title">Generated QR</string>
+    <string name="generated_qr_result_title">Generated QR Result:</string>
+    <string name="main_title">Click icon to scan QR code</string>
+    <string name="scan_results">Scan Results</string>
+    <string name="generate_results">Generate Results</string>
+    <string name="standard_compliant">Compliant to EMVCo version 1.0 standard</string>
+    <string name="upload">Upload</string>
+    <string name="version_number">v2.0.7</string>
+    <string name="main_header">Masterpass-QR Tester</string>
+    <string name="generate_link">View Generate Results</string>
+    <string name="success_title">Success</string>
+    <string name="scan_link">View Scan Results</string>
+    <string name="tag">TAG</string>
+    <string name="click_to_see_more">click to see more...</string>
+    <string name="fail_title">Failed</string>
+    <string name="success_subtitle">Your QR Code is compliant with EMVCo Standards!</string>
+    <string name="description">Description</string>
+    <string name="roottag">Root Tag</string>
+    <string name="tag_value_title">Value</string>
+    <string name="subtags_title">Sub-tags</string>
+    <string name="app_name">MPQR Tester</string>
+    <string name="success_exception">QR Scanning is successful based on the minimum scanning criteria, but there are logic/formatting areas that can be improved. Please check the QR Generation Results for suggested changes.</string>
+
+    <string name="pay">Pay</string>
+    <string name="cancel">OK</string>
+    <string name="error">Error</string>
+    <string name="payment_failed">Payment failed</string>
+    <string name="unexpected_error">An unexpected error occurred. Please try again.</string>
+    <string name="processing_payment_message">Processing payment …</string>
+    <string name="receipt_success_payment">You have made a successful payment!</string>
+
+</resources>

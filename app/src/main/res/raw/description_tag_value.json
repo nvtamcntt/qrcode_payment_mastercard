@@ -1,0 +1,70 @@
+{
+    "pushPaymentData": {
+        "00": "Payload format indicator",
+        "01": "Point of initiation method",
+        "02": "Merchant identifier as defined by (Visa)",
+        "03": "Merchant identifier as defined by (Visa)",
+        "04": "Merchant identifier as defined by (Mastercard)",
+        "05": "Merchant identifier as defined by (Mastercard)",
+        "06": "Tag 06 is reserved by EMVCo. For Bharat QR standard in India, this tag is currently defined by NCPI",
+        "07": "Tag 07 is reserved by EMVCo. For Bharat QR standard in India, this tag is currently defined by NPCI",
+        "08": "Tag 08 is reserved by EMVCo",
+        "09": "Merchant identifier (Discover)",
+        "10": "Merchant identifier (Discover)",
+        "11": "Merchant identifier (Amex)",
+        "12": "Merchant identifier (Amex)",
+        "13": "Merchant identifier (JCB)",
+        "14": "Merchant identifier (JCB)",
+        "15": "Merchant identifier (UnionPay)",
+        "16": "Merchant identifier (UnionPay)",
+        "17": "Merchant identifier (EMVCo)",
+
+        "26": {
+            "00": "Application Identifier (AID) or 'UUID' or 'REVERSE DOMAIN NAME'",
+            "01": "Payment Network Specific value"
+        },
+
+        "52": "Merchant Category Code: MCC as defined by ISO 18245",
+        "53": "Transaction Currency Code: As defined by ISO 4217",
+        "54": "Transaction amount",
+        "55": "Tip or convenience indicator. 01 : Indicates Consumer should be prompted to enter tip. 02 : Indicates that merchant would mandatorily charge a flat convenience fee. 03 : Indicates that merchant would charge a percentage convenience fee.",
+        "56":"Value of convenience fee fixed.",
+        "57": "Value of convenience fee percentage. The Convenience Fee Percentage is specified as whole integers between 00.01 (for 00.01%) to 99.99 (99.99%). E.g. 11.95",
+        "58": "Country Code: As defined by ISO 3166.",
+        "59": "Merchant Name: Should always be the “doing business as” name for the merchant.",
+        "60": "Merchant City",
+        "61":"Postal code: Zip code or Pin code or Postal code of merchant",
+        "62": {
+            "01": "Invoice number or bill number",
+            "02": "Mobile number: To be used for top-up or bill payment",
+            "03": "A distinctive number associated to a Store",
+            "04": "Typically a loyalty card number as provided by store or airline",
+            "05": "Any value as defined by merchant or acquirer in order to identify the transaction",
+            "06": "Typically a subscriber ID for subscription services or student enrollment number etc.",
+            "07": "A distinctive number associated to a Terminal in the store",
+            "08": "Any value as defined by the merchant or acquirer in order to define the purpose of the transaction",
+            "09": "Additional information to prompt consumer for; 'A' for Address, 'E' for email and 'M' for consumer mobile.",
+
+            "50": {
+                "00": "Application Identifier (AID)",
+                "01": "Context Specific Data value"
+            }
+        },
+        "63": "CRC calculated to ISO/IEC 3309 compliant 16 bit CRC which includes all the preceding TLV objects till the Tag and length value of CRC i.e. A904. CRC would be the last TLV object.",
+        "64": {
+            "00": "Language Preferences: As defined by ISO639, should represent language used to encode TAGS 01-02",
+            "01": "Alternate Merchant Name: Should be the “doing business as” name for the merchant in merchant's local language.",
+            "02": "Alternate Merchant City: Should be the city in which the merchant transacts in the merchant’s local language."
+        },
+        "91": {
+            "00": "Application Identifier (AID) or 'UUID' or 'REVERSE DOMAIN NAME'",
+            "01": "Context Specific Data value"
+        }
+    },
+    "main": {
+        "26": "Dynamic Merchant Identifier.",
+        "62": "Additional Data Field: Additional information beyond that mentioned in other tags.",
+        "64": "Merchant Information - Alternate Language: Merchant information in an alternate language, typically local.",
+        "91": "Contains Context Specific Data and a mandatory Globally Unique Identifier."
+    }
+}

@@ -1,0 +1,75 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
+    defaultConfig {
+        applicationId "com.mastercard.labs.sng.qrscantester"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 8
+        versionName "2.0.8"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        setProperty("archivesBaseName", "qrscan-tester")
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    //rename the apk with version info
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = outputFileName.replace(".apk", "-${variant.versionName}.apk")
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        disable 'MissingTranslation'
+        abortOnError false
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+def RetrofitVersion = '2.4.0'
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile(name: 'qr-scan-sdk-release-1.0.0', ext: 'aar')
+    compile files('libs/pushpayment-core-sdk-2.0.2.obf.jar')
+    compile 'org.apache.commons:commons-lang3:3.5'
+    compile 'com.journeyapps:zxing-android-embedded:3.4.0'
+    compile "com.squareup.retrofit2:retrofit:$RetrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$RetrofitVersion"
+    compile 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    compile 'com.android.support:appcompat-v7:27.3.0'
+    compile 'com.android.support:design:27.3.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:support-v4:27.3.1'
+    compile 'com.android.support:recyclerview-v7:27.3.1'
+    testCompile 'junit:junit:4.12'
+}
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '25.3.0'
+            }
+        }
+    }
+}

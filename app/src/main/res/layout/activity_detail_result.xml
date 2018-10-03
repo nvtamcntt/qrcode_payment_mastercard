@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorSub"
+        android:fitsSystemWindows="true"
+        tools:context="com.mastercard.labs.sng.qrscantester.DetailResultActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            app:toolbarTitle="@{@string/scan_results}" />
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/toolbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/toolbar"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="30dp"
+                    android:paddingTop="25dp">
+
+                    <TextView
+                        android:id="@+id/activity_detail_result_tag"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="03"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:textColor="@color/colorAccent"
+                        android:textColorLink="@color/colorAccent"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/activity_detail_result_tag_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="TAG_03_STORE_ID"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:textColor="@color/colorMuted"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/topDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider" />
+
+                <RelativeLayout
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite">
+
+                    <LinearLayout
+                        android:id="@+id/entry_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical"
+                        android:paddingBottom="13dp"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingTop="13dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
+                            android:text="@string/description"
+                            android:textAppearance="@style/DetailsTitle" />
+
+                        <TextView
+                            android:id="@+id/description_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="10dp"
+                            android:text="01111111111"
+                            android:textAppearance="@style/DetailsValue" />
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/entry_details"
+                        android:background="@color/colorDivider" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rootTag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite">
+
+                    <LinearLayout
+                        android:id="@+id/root_entry_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical"
+                        android:paddingBottom="13dp"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingTop="13dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
+                            android:text="@string/roottag"
+                            android:textAppearance="@style/DetailsTitle" />
+
+                        <TextView
+                            android:id="@+id/roottag_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="10dp"
+                            android:text="01111111111"
+                            android:textAppearance="@style/DetailsValue" />
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/root_entry_details"
+                        android:background="@color/colorDivider" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/tag_value_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite">
+
+                    <LinearLayout
+                        android:id="@+id/tagValue_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical"
+                        android:paddingBottom="13dp"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingTop="13dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
+                            android:text="@string/tag_value_title"
+                            android:textAppearance="@style/DetailsTitle" />
+
+                        <TextView
+                            android:id="@+id/tag_value_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="10dp"
+                            android:text="01111111111"
+                            android:textAppearance="@style/DetailsValue" />
+
+                        <TextView
+                            android:id="@+id/error"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="10dp"
+                            android:paddingTop="5dp"
+                            android:text="Valid format example: --"
+                            android:textColor="@color/colorError"
+                            android:textSize="@dimen/small_text_size"
+                            android:textStyle="italic"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/tagValue_details"
+                        android:background="@color/colorDivider" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/subtags_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical"
+                    android:paddingTop="13dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp"
+                        android:paddingStart="10dp"
+                        android:text="@string/subtags_title"
+                        android:textAppearance="@style/DetailsTitle" />
+
+                    <fragment
+                        android:id="@+id/fragment1"
+                        android:name="com.mastercard.labs.sng.qrscantester.DetailFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+</layout>

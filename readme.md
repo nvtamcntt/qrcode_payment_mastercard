@@ -1,0 +1,3 @@
+# MPQR Tutorial Reference Android Application
+
+This is a reference application that can successfully scan an EMVCo Compliant QR code and extract the data attributes. Furthermore, this reference application is integrated with the MPQR Tutorial Spring Application Server found here: https://github.com/Mastercard/mpqr-tutorial-spring. Follow this tutorial to understand how you can run this application and the reference Spring application server to create a reference MPQR consumer application that can perform push payments to a merchant: https://developer.mastercard.com/tutorial/masterpass-qr-tutorial?lang=android-java#overview

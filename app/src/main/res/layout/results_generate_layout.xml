@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:fitsSystemWindows="true"
+        tools:context="com.mastercard.labs.sng.qrscantester.results.ResultsActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            app:toolbarTitle="@{@string/generate_results}" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/toolbar">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorWhite">
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/top_portion"
+                    android:layout_alignTop="@+id/top_portion"
+                    android:background="@drawable/background" />
+
+                <RelativeLayout
+                    android:id="@+id/top_portion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true">
+
+                    <FrameLayout
+                        android:id="@+id/frame_qr_code"
+                        android:layout_width="@dimen/size_qr_code"
+                        android:layout_height="@dimen/size_qr_code"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="30dp">
+
+                        <ImageView
+                            android:id="@+id/img_qr_code"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:contentDescription="QR Code" />
+
+                        <ProgressBar
+                            android:id="@+id/pb_qr_code"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:indeterminate="true" />
+                    </FrameLayout>
+
+                    <include
+                        android:id="@+id/top_section"
+                        layout="@layout/results_top_display"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/frame_qr_code" />
+
+                    <LinearLayout
+                        android:id="@+id/generate_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_below="@id/top_section"
+                        android:onClick="onScanClicked"
+                        android:padding="15dp">
+
+                        <ImageView
+                            android:id="@+id/btn_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingEnd="5dp"
+                            android:src="@drawable/nav_arrow_left" />
+
+                        <TextView
+                            android:id="@+id/btn_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/scan_link"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:layout_below="@+id/generate_btn"
+                        android:background="@color/colorAccent" />
+                </RelativeLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_tags"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@+id/top_portion"
+                    android:background="@color/colorWhite"
+                    android:scrollbars="vertical" />
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+</layout>

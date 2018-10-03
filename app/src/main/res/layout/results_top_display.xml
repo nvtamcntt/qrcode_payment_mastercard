@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/results_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="25dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="20dp">
+
+            <ImageView
+                android:id="@+id/outcome_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/tick" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp">
+
+                <TextView
+                    android:id="@+id/outcome_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/success_title"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/outcome_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/outcome_title"
+                    android:paddingTop="5dp"
+                    android:text="@string/success_subtitle"
+                    android:textColor="@color/colorSmallText"
+                    android:textSize="12sp"
+                    android:lineSpacingExtra="3dp"
+                    android:textAllCaps="true"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+</LinearLayout>
