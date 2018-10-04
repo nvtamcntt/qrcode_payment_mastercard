@@ -89,6 +89,9 @@ public class MainActivity extends AppCompatActivity {
         innerIntent.setType("image/*");
         Intent wrapperIntent = Intent.createChooser(innerIntent, "Choose QR Code Picture");
         this.startActivityForResult(wrapperIntent, REQUEST_CODE_IMAGE);
+//
+//        Intent intent = new Intent(this, TransactionListActivity.class);
+//        this.startActivity(intent);
     }
 
     /**

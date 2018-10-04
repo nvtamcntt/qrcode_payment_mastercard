@@ -9,7 +9,7 @@
         android:orientation="vertical"
         android:fitsSystemWindows="true"
         android:background="@color/colorWhite"
-        tools:context="com.mastercard.labs.sng.qrscantester.results.ResultsActivity">
+        tools:context="com.mastercard.labs.sng.qrscantester.TransactionListActivity">
 
         <include
             android:id="@+id/toolbar"
@@ -37,37 +37,6 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/top_portion">
 
-                    <include
-                        android:id="@+id/top_section"
-                        layout="@layout/results_top_display" />
-
-                    <LinearLayout
-                        android:id="@+id/scan_btn"
-                        android:layout_below="@id/top_section"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:onClick="onGenerateClicked"
-                        android:padding="15dp">
-
-                        <TextView
-                            android:id="@+id/btn_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:text="@string/generate_link"
-                            android:textColor="@color/colorAccent"
-                            android:textSize="12sp" />
-
-                        <ImageView
-                            android:id="@+id/btn_icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:paddingStart="5dp"
-                            android:src="@drawable/nav_arrow_right" />
-                    </LinearLayout>
-
                     <RelativeLayout
                         android:id="@+id/divider"
                         android:layout_width="match_parent"
@@ -78,7 +47,7 @@
                 </RelativeLayout>
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_tags"
+                    android:id="@+id/recycler"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_alignParentBottom="true"
@@ -89,16 +58,6 @@
 
         </ScrollView>
 
-        <Button
-            android:id="@+id/btn_input_amount"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="@string/input_amount"
-            android:textAllCaps="false"
-            android:textSize="@dimen/size_x"
-            android:textColor="@color/colorWhite"
-            android:backgroundTint="@color/colorAccent"
-            android:onClick="inputAmountSetting"/>
 
     </LinearLayout>
 </layout>

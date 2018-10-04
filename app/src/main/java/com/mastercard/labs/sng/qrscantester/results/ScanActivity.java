@@ -5,16 +5,20 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
+import com.mastercard.labs.sng.qrscantester.DetailResultActivity;
 import com.mastercard.labs.sng.qrscantester.ExceptionDetails;
 import com.mastercard.labs.sng.qrscantester.R;
 import com.mastercard.labs.sng.qrscantester.api.ApiClient;
 import com.mastercard.labs.sng.qrscantester.api.request.PaymentRequest;
 import com.mastercard.labs.sng.qrscantester.api.response.PaymentResponse;
 import com.mastercard.labs.sng.qrscantester.model.ListSimpleResponese;
+import com.mastercard.labs.sng.qrscantester.model.Merchant;
 import com.mastercard.labs.sng.qrscantester.model.PaymentData;
-import com.mastercard.labs.sng.qrscantester.model.TransactionData;
+import com.mastercard.labs.sng.qrscantester.model.PaymentInstrument;
 import com.mastercard.labs.sng.qrscantester.utils.DialogUtils;
+import com.mastercard.mpqr.pushpayment.model.AdditionalData;
 import com.mastercard.mpqr.pushpayment.model.PushPaymentData;
 import com.mastercard.mpqr.pushpayment.parser.Parser;
 
@@ -91,7 +95,7 @@ public class ScanActivity extends ResultsActivity {
             }
         } else generatedError = exceptionDetails;
 
-        Intent intent = GenerateActivity.createNewIntent(this, generatedError, ppData, scanError);
+        Intent intent = DetailResultActivity.GenerateActivity.createNewIntent(this, generatedError, ppData, scanError);
         startActivity(intent);
     }
     public void requestPayment1(View v) {
@@ -114,6 +118,77 @@ public class ScanActivity extends ResultsActivity {
         });
     }
 
+    public void inputAmountSetting(View v) {
+        //generatePPString
+        String generatedFeedback = "", dumpedData = null;
+        PaymentData paymentData = null;
+
+        if (qrData != null) {
+            try {
+                PushPaymentData ppData = (PushPaymentData)qrData;
+                dumpedData = ppData.dumpData();
+                paymentData = paymentData(ppData);
+            } catch (Exception e) {
+                generatedFeedback += "Errors: " + e.getMessage() + "\n";
+            }
+        }
+        if (dumpedData != null)
+            generatedFeedback  += "Generated QR Code: " + dumpedData;
+
+        Intent intent = InputAmountActivity.newIntent(this, exceptionDetails, qrData, paymentData);
+        startActivity(intent);
+    }
+
+    private PaymentData paymentData(PushPaymentData pushPaymentData) { //implementation to convert payment data model from sdk to app to be used in payment api request
+        PaymentData.TipInfo tipInfo = null;
+        double tip = 0;
+        if (pushPaymentData.getTipOrConvenienceIndicator() != null) {
+            switch (pushPaymentData.getTipOrConvenienceIndicator()) {
+                case PushPaymentData.TipConvenienceIndicator.FLAT_CONVENIENCE_FEE:
+                    tipInfo = PaymentData.TipInfo.FLAT_CONVENIENCE_FEE;
+                    tip = pushPaymentData.getValueOfConvenienceFeeFixed();
+
+                    break;
+                case PushPaymentData.TipConvenienceIndicator.PERCENTAGE_CONVENIENCE_FEE:
+                    tipInfo = PaymentData.TipInfo.PERCENTAGE_CONVENIENCE_FEE;
+                    tip = pushPaymentData.getValueOfConvenienceFeePercentage();
+
+                    break;
+                case PushPaymentData.TipConvenienceIndicator.PROMPTED_TO_ENTER_TIP:
+                    tipInfo = PaymentData.TipInfo.PROMPTED_TO_ENTER_TIP;
+                    tip = 0;
+
+                    break;
+            }
+        }
+
+        PaymentInstrument selectedPaymentInstrument = new PaymentInstrument();
+        AdditionalData additionalData = pushPaymentData.getAdditionalData();
+
+        return new PaymentData(101, selectedPaymentInstrument.getId(), true, pushPaymentData.getTransactionAmount(),
+                tipInfo, tip, pushPaymentData.getTransactionCurrencyCode(), additionalData == null ? null : additionalData.getMobileNumber(),
+                merchant(pushPaymentData));
+    }
+
+    private Merchant merchant(PushPaymentData pushPaymentData) { // fetch merchant data from payment data
+        Merchant merchant = new Merchant();
+
+        merchant.setName(pushPaymentData.getMerchantName());
+        merchant.setCity(pushPaymentData.getMerchantCity());
+        merchant.setCategoryCode(pushPaymentData.getMerchantCategoryCode());
+        merchant.setIdentifierVisa02(pushPaymentData.getMerchantIdentifierVisa02());
+        merchant.setIdentifierVisa03(pushPaymentData.getMerchantIdentifierVisa03());
+        merchant.setIdentifierMastercard04(pushPaymentData.getMerchantIdentifierMastercard04());
+        merchant.setIdentifierMastercard05(pushPaymentData.getMerchantIdentifierMastercard05());
+        merchant.setIdentifierNPCI06(pushPaymentData.getMerchantIdentifierNPCI06());
+        merchant.setIdentifierNPCI07(pushPaymentData.getMerchantIdentifierNPCI07());
+        if (pushPaymentData.getAdditionalData() != null) {
+            merchant.setTerminalNumber(pushPaymentData.getAdditionalData().getTerminalId());
+            merchant.setStoreId(pushPaymentData.getAdditionalData().getStoreId());
+        }
+
+        return merchant;
+    }
     public void requestPayment(View v) {
 
         if (paymentRequest != null) {

@@ -38,14 +38,29 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mastercard.labs.sng.qrscantester.results.ScanActivity"/>
         </activity>
-        
         <activity
-            android:name=".results.GenerateActivity"
+            android:name=".results.InputAmountActivity"
+            android:label="Scan"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mastercard.labs.sng.qrscantester.results.InputAmountActivity"/>
+        </activity>
+        <activity
+            android:name=".TransactionListActivity"
+            android:label="Scan"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mastercard.labs.sng.qrscantester.TransactionListActivity"/>
+        </activity>
+        <activity
+            android:name=".DetailResultActivity$GenerateActivity"
             android:label="Generate"
             android:parentActivityName=".results.ScanActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mastercard.labs.sng.qrscantester.results.GenerateActivity"/>
+                android:value="com.mastercard.labs.sng.qrscantester.DetailResultActivity$GenerateActivity"/>
         </activity>
         <activity
             android:name=".DetailResultActivity"

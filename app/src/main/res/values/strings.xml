@@ -4,6 +4,7 @@
     <string name="generated_qr_result_title">Generated QR Result:</string>
     <string name="main_title">Click icon to scan QR code</string>
     <string name="scan_results">Scan Results</string>
+    <string name="input_amout">Input amount</string>
     <string name="generate_results">Generate Results</string>
     <string name="standard_compliant">Compliant to EMVCo version 1.0 standard</string>
     <string name="upload">Upload</string>
@@ -24,6 +25,7 @@
     <string name="success_exception">QR Scanning is successful based on the minimum scanning criteria, but there are logic/formatting areas that can be improved. Please check the QR Generation Results for suggested changes.</string>
 
     <string name="pay">Pay</string>
+    <string name="input_amount">Input Amount</string>
     <string name="cancel">OK</string>
     <string name="error">Error</string>
     <string name="payment_failed">Payment failed</string>
