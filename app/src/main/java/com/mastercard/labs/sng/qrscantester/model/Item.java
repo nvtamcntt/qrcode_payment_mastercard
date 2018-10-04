@@ -6,19 +6,29 @@ package com.mastercard.labs.sng.qrscantester.model;
 
 public class Item {
     private String transactionId;
-    private String transactionDetail;
+    private String transactionAmount;
+    private String transactionStoreName;
 
-    public Item(String transactionId, String transactionDetail) {
+    public Item(String transactionId, String transactionAmount,String transactionStoreName) {
         this.transactionId = transactionId;
-        this.transactionDetail = transactionDetail;
+        this.transactionAmount = transactionAmount;
+        this.transactionStoreName = transactionStoreName;
     }
 
-    public String getTransactionDetail() {
-        return transactionDetail;
+    public String getTransactionAmount() {
+        return transactionAmount;
     }
 
-    public void setTransactionDetail(String transactionDetail) {
-        this.transactionDetail = transactionDetail;
+    public void setTransactionAmount(String transactionAmount) {
+        this.transactionAmount = transactionAmount;
+    }
+
+    public String getTransactionStoreName() {
+        return transactionStoreName;
+    }
+
+    public void setTransactionStoreName(String transactionStoreName) {
+        this.transactionStoreName = transactionStoreName;
     }
 
     public String getTransactionId() {

@@ -11,14 +11,43 @@ public class TransactionLocal {
     private String resource_type;
     private String sender_account_uri;
     private String original_status;
+    private String store_name;
 
-    public TransactionLocal(String key_id, String transfer_reference, String status, String resource_type, String sender_account_uri, String original_status) {
+    public String getKey_id() {
+        return key_id;
+    }
+
+    public void setKey_id(String key_id) {
+        this.key_id = key_id;
+    }
+
+    public String getStore_name() {
+        return store_name;
+    }
+
+    public void setStore_name(String store_name) {
+        this.store_name = store_name;
+    }
+
+    public String getTransaction_amount() {
+        return transaction_amount;
+    }
+
+    public void setTransaction_amount(String transaction_amount) {
+        this.transaction_amount = transaction_amount;
+    }
+
+    private String transaction_amount;
+
+    public TransactionLocal(String key_id, String transfer_reference, String status, String resource_type, String sender_account_uri, String original_status, String transaction_amount, String store_name) {
         this.key_id = key_id;
         this.transfer_reference = transfer_reference;
         this.status = status;
         this.resource_type = resource_type;
         this.sender_account_uri = sender_account_uri;
         this.original_status = original_status;
+        this.store_name = store_name;
+        this.transaction_amount = transaction_amount;
     }
 
     public String getId() {

@@ -29,6 +29,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String RESOURCE_TYPE = "resource_type";
     private static final String SENDER_ACCOUNT_URI = "sender_account_uri";
     private static final String ORIGINAL_STATUS = "original_status";
+    private static final String TRANSACTION_AMOUNT = "transfer_amount";
+    private static final String STORE_NAME = "store_name";
 
     public DatabaseHandler(Context context,SQLiteDatabase.CursorFactory factory) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
@@ -42,7 +44,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 STATUS + " TEXT, " +
                 RESOURCE_TYPE + " VARCHAR(200), " +
                 SENDER_ACCOUNT_URI + " VARCHAR(200), " +
-                ORIGINAL_STATUS + " VARCHAR(200) )";
+                ORIGINAL_STATUS + " VARCHAR(200), " +
+                TRANSACTION_AMOUNT + " VARCHAR(200), " +
+                STORE_NAME + " VARCHAR(200) )";
         System.out.print("@@@" + SQLQuery);
         sqLiteDatabase.execSQL(SQLQuery);
     }
@@ -64,6 +68,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(RESOURCE_TYPE, transactionLocal.getResource_type());
         values.put(SENDER_ACCOUNT_URI, transactionLocal.getSender_account_uri());
         values.put(ORIGINAL_STATUS, transactionLocal.getOriginal_status());
+        values.put(TRANSACTION_AMOUNT, transactionLocal.getTransaction_amount());
+        values.put(STORE_NAME, transactionLocal.getStore_name());
 
         db.insert(TABLE_NAME, null, values);
         db.close();
@@ -82,7 +88,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     cursor.getString(3),
                     cursor.getString(4),
                     cursor.getString(5),
-                    cursor.getString(6));
+                    cursor.getString(6),
+                    cursor.getString(7),
+                    cursor.getString(8));
             return local;
         }
         return null;
@@ -104,7 +112,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     cursor.getString(3),
                     cursor.getString(4),
                     cursor.getString(5),
-                    cursor.getString(6));
+                    cursor.getString(6),
+                    cursor.getString(7),
+                    cursor.getString(8));
             array_list.add(local);
             cursor.moveToNext();
         }

@@ -47,6 +47,8 @@ public class TransactionListActivity extends ResultsActivity {
 
         recycler.setAdapter(mAdapter);
 
+        hideProcessingPaymentLoading();
+
         //Set Load more event
         mAdapter.setLoadMore(new ILoadMore() {
             @Override
@@ -76,7 +78,7 @@ public class TransactionListActivity extends ResultsActivity {
     public List<Item> mappingObjectToList(ArrayList<TransactionLocal> list) {
         List<Item> items = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
-            Item item = new Item(list.get(i).getId(), list.get(i).getStatus());
+            Item item = new Item(list.get(i).getId(), list.get(i).getTransaction_amount(),list.get(i).getStore_name());
             items.add(item);
         }
         return items;

@@ -22,7 +22,7 @@ public class PaymentRequestData {
     private String additional_message;
 
     public PaymentRequestData() {
-        this.transfer_reference = "400230517077183589418977281159883110" + (int)(Math.random() * 100);
+        this.transfer_reference = "4002305170771" + (int) (Math.random() * 100) + "9418977281159883110" + (int) (Math.random() * 100);
         this.payment_type = "P2M";
         this.payment_origination_country = "USA";
         this.sender_account_uri = "pan:5184680430000006;exp=2020-08;cvc=123";
@@ -58,7 +58,7 @@ public class PaymentRequestData {
         this.recipient.token_cryptogram.type = "CONTACTLESS_CHIP";
         this.recipient.token_cryptogram.value = "hjjoutwsdgfdou124354ljlsdhgout96896";
         this.recipient.authentication_value = "ucaf:jJJLtQa+Iws8AREAEbjsA1MAAAb";
-//        this.participant.card_acceptor_name = "";
+        this.participant.card_acceptor_name = "WELLS FARGO BANK NA";
         this.participation_id = "TERMINAL34728";
         this.additional_message = "myadditionalmessage";
         this.mastercard_assigned_id = "101010";
@@ -84,7 +84,7 @@ public class PaymentRequestData {
 
         private TransactionAmount(String currency, Double value) {
             this.currency = currency;
-            this.value = String.format(Locale.getDefault(), "%d", (int)(value * 100));
+            this.value = String.format(Locale.getDefault(), "%d", (int) (value * 100));
         }
 
         public String getCurrency() {
@@ -123,7 +123,7 @@ public class PaymentRequestData {
     }
 
     public class Participant {
-//        private String card_acceptor_id;
+        //        private String card_acceptor_id;
         private String card_acceptor_name;
     }
 }

@@ -123,7 +123,9 @@ public class InputAmountActivity extends ResultsActivity {
                         transactionData.getStatus(),
                         transactionData.getResourceType(),
                         transactionData.getSenderAccountUri(),
-                        transactionData.getOriginalStatus()
+                        transactionData.getOriginalStatus(),
+                        transactionData.getTransferAmount().getValue().toString(),
+                        transactionData.getParticipant().getCard_acceptor_name()
                     );
                     mDatabaseHandler.addTransaction(transactionLocal);
 

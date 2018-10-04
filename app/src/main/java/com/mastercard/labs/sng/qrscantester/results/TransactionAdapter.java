@@ -35,12 +35,14 @@ class LoadingViewHolder extends RecyclerView.ViewHolder {
 class ItemViewHolder extends RecyclerView.ViewHolder {
 
     public TextView transactionId;
-    public TextView transactionDetail;
+    public TextView transactionStoreName;
+    public TextView transactionAmount;
 
     public ItemViewHolder(View itemView) {
         super(itemView);
         transactionId = itemView.findViewById(R.id.transactionId);
-        transactionDetail = itemView.findViewById(R.id.transactionDetail);
+        transactionStoreName = itemView.findViewById(R.id.storeName);
+        transactionAmount = itemView.findViewById(R.id.amountPay);
     }
 }
 
@@ -104,7 +106,8 @@ public class TransactionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             Item item = items.get(position);
             ItemViewHolder viewHolder = (ItemViewHolder) holder;
             viewHolder.transactionId.setText(item.getTransactionId());
-            viewHolder.transactionDetail.setText(item.getTransactionDetail());
+            viewHolder.transactionAmount.setText(item.getTransactionAmount());
+            viewHolder.transactionStoreName.setText(item.getTransactionStoreName());
         }else if (holder instanceof LoadingViewHolder){
             LoadingViewHolder loadingViewHolder = (LoadingViewHolder) holder;
             loadingViewHolder.progressBar.setIndeterminate(true);
